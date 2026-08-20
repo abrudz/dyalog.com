@@ -25,11 +25,5 @@ python -m venv .venv
 
 ## Deployment
 
-Published to **GitHub Pages** from the `gh-pages` branch, produced by:
-
-```bash
-mkdocs gh-deploy --strict
-```
-
-(An automated GitHub Actions workflow can be added under `.github/workflows/` later; committing
-one requires a token with the `workflow` scope.)
+Built and published to **GitHub Pages** automatically on every push to `main` by
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
