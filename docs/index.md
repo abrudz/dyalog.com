@@ -86,6 +86,24 @@ Pick a problem and a language, and compare!
         }
         ```
 
+    === "C"
+
+        ```c
+        #include <stdio.h>
+        
+        int lstSum(int * x, int n) {
+        	int sum = 0;
+        	for (int i = 0; i < n; i++)
+        		sum += x[i];
+        	return sum;
+        }
+        
+        int main() {
+        	int list[5] = { 3, 1, 4, 1, 5 };
+        	printf("%d\n", lstSum(list, 5)); // 14
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
@@ -169,6 +187,31 @@ Pick a problem and a language, and compare!
         
         func main() {
         	ColSum([][]int{{3, 1}, {4, 1}, {5, 9}}) // [12 11]
+        }
+        ```
+
+    === "C"
+
+        ```c
+        #include <stdio.h>
+        
+        void colSum(int * x, int n, int m, int * y) {
+        	for (int j = 0; j < m; j++)
+        		y[j] = 0;
+        	for (int i = 0; i < n; i++)
+        		for (int j = 0; j < m; j++)
+        			y[j] += x[i * m + j];
+        }
+        
+        int main() {
+        	int table[3][2] = {
+        		{ 3, 1 },
+        		{ 4, 1 },
+        		{ 5, 9 }
+        	};
+        	int col_sum[2]; 
+        	colSum((int *)table, 3, 2, col_sum);
+        	printf("%d %d\n", col_sum[0], col_sum[1]); // 12 11
         }
         ```
 
@@ -270,6 +313,31 @@ Pick a problem and a language, and compare!
         }
         ```
 
+    === "C"
+
+        ```c
+        #include <stdio.h>
+        
+        void winSum(int * x, int n, int w, int * y) {
+        	for (int i = 0; i < n - (w - 1); i++) {
+        		int sum = 0;
+        		for (int j = 0; j < w; j++)
+        			sum += x[i + j];
+        		y[i] = sum;
+        	}
+        }
+        
+        int main() {
+        	int list[5] = { 3, 1, 4, 1, 5 };
+        	int win_sum_2[4];
+        	int win_sum_3[3];
+        	winSum(list, 5, 2, win_sum_2);
+        	winSum(list, 5, 3, win_sum_3);
+        	printf("%d %d %d %d\n", win_sum_2[0], win_sum_2[1], win_sum_2[2], win_sum_2[3]); // 4 5 5 6
+        	printf("%d %d %d\n",    win_sum_3[0], win_sum_3[1], win_sum_3[2]); // 8 6 10
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
@@ -292,7 +360,7 @@ Pick a problem and a language, and compare!
         
         winSum :: Num a => Int -> [a] -> [a]
         winSum n xs = case window n xs of
-            Just window -> lstSum window : (winSum n $ tail xs)
+            Just window -> sum window : (winSum n $ tail xs)
             Nothing     -> []
         
         main :: IO ()
@@ -382,6 +450,35 @@ Pick a problem and a language, and compare!
         }
         ```
 
+    === "C"
+
+        ```c
+        #include <stdio.h>
+        
+        void atrSum(int * x, int n, int m, int w, int * y) {
+        	for (int i = 0; i < n - (w - 1); i++) {
+        		for (int j = 0; j < m; j++) {
+        			y[i * m + j] = 0;
+        			for (int k = 0; k < w; k++)
+        				y[i * m + j] += x[(i + k) * m + j];
+        		}
+        	}
+        }
+        
+        int main() {
+        	int table[3][2] = {
+        		{ 3, 1 },
+        		{ 4, 1 },
+        		{ 5, 9 }
+        	};
+        	int atr_sum[2][2];
+        	atrSum((int *)table, 3, 2, 2, (int *)atr_sum);
+        	printf("%d %d\n%d %d\n", atr_sum[0][0], atr_sum[0][1], atr_sum[1][0], atr_sum[1][1]);
+        	// 7 2
+        	// 9 10
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
@@ -397,6 +494,10 @@ Pick a problem and a language, and compare!
     === "Haskell"
 
         ```haskell
+        colSum :: Num a => [[a]] -> [a]
+        colSum [] = []
+        colSum xs = foldr1 (zipWith (+)) xs
+        
         window :: Int -> [a] -> Maybe [a]
         window 0 [] = Just []
         window _ [] = Nothing
@@ -519,6 +620,91 @@ Pick a problem and a language, and compare!
         		{1, 2, 3},
         		{[]int{1, 2}, []int{4, 5}, []int{5, 6}},
         	}) // [[2 3] [6 7] [8 9]]
+        }
+        ```
+
+    === "C"
+
+        ```c
+        #include <stdio.h>
+        #include <stdlib.h>
+        
+        typedef enum { ONE, MANY } MixTag;
+        typedef struct {
+        	MixTag tag;
+        	union {
+        		int one;
+        		int * many;
+        	} payload;
+        } Mix;
+        
+        void mixSum(Mix * x, int n, int m, int p, Mix * y) {
+        	for (int j = 0; j < m; j++)
+        		y[j] = (Mix){ ONE, 0 };
+        	for (int i = 0; i < n; i++) {
+        		for (int j = 0; j < m; j++) {
+        			switch (y[j].tag) {
+        			case ONE:
+        				switch (x[i * m + j].tag) {
+        				case ONE:
+        					y[j].payload.one += x[i * m + j].payload.one;
+        					break;
+        				case MANY: {
+        					int * many = malloc(p * sizeof(int));
+        					for (int k = 0; k < p; k++)
+        						many[k] = y[j].payload.one + x[i * m + j].payload.many[k];
+        					y[j].tag = MANY;
+        					y[j].payload.many = many;
+        					break;
+        				}
+        				}
+        				break;
+        			case MANY:
+        				switch (x[i * m + j].tag) {
+        				case ONE:
+        					for (int k = 0; k < p; k++)
+        						y[j].payload.many[k] += x[i * m + j].payload.one;
+        					break;
+        				case MANY:
+        					for (int k = 0; k < p; k++)
+        						y[j].payload.many[k] += x[i * m + j].payload.many[k];
+        					break;
+        				}
+        				break;
+        			}
+        		}
+        	}
+        }
+        
+        int main() {
+        	Mix mix[2][3];
+        	mix[0][0] = (Mix){ ONE, 1 };
+        	mix[0][1] = (Mix){ ONE, 2 };
+        	mix[0][2] = (Mix){ ONE, 3 };
+        	mix[1][0].tag = MANY;
+        	mix[1][1].tag = MANY;
+        	mix[1][2].tag = MANY;
+        	mix[1][0].payload.many = malloc(2 * sizeof(int));
+        	mix[1][1].payload.many = malloc(2 * sizeof(int));
+        	mix[1][2].payload.many = malloc(2 * sizeof(int));
+        	mix[1][0].payload.many[0] = 1;
+        	mix[1][0].payload.many[1] = 2;
+        	mix[1][1].payload.many[0] = 4;
+        	mix[1][1].payload.many[1] = 5;
+        	mix[1][2].payload.many[0] = 5;
+        	mix[1][2].payload.many[1] = 6;
+        
+        	Mix mix_sum[3];
+        	mixSum((Mix *)mix, 2, 3, 2, mix_sum);
+        	printf("%d %d, %d %d, %d %d\n",
+        		mix_sum[0].payload.many[0],
+        		mix_sum[0].payload.many[1],
+        		mix_sum[1].payload.many[0],
+        		mix_sum[1].payload.many[1],
+        		mix_sum[2].payload.many[0],
+        		mix_sum[2].payload.many[1]
+        	);
+        	// 2 3, 6 7, 8 9
         }
         ```
 
