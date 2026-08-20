@@ -1,20 +1,50 @@
-# Pricing and licensing
+# Pricing and Licences
 
-Dyalog is free for educational and non-commercial use, and licensed for
-commercial deployment.
+Dyalog offers different licences for developing and deploying applications, with a
+personalised approach rather than one-size-fits-all licensing.
 
-## Non-commercial
+<div class="grid cards" markdown>
 
-Free for personal, educational, and non-commercial projects. Download and start
-today — no licence key required.
+-   __Developer Licences__
 
-## Commercial
+    ---
 
-Commercial licences cover development and deployment for business systems.
-Pricing depends on platform and deployment model.
+    Use the Dyalog development environment for commercial or non-commercial work.
+    **Free for non-commercial and educational use**; commercial development is an
+    annual subscription.
 
-[Talk to us](business.md){ .md-button .md-button--primary }
+    [:octicons-arrow-right-24: Developer Licences](https://dyalogprod.gos.dyalog.com/pricing-and-licences/developer-licences/)
 
-!!! info
-    This scaffold page is a placeholder. Replace the tiers and figures with the
-    real pricing details.
+-   __Run-Time Licences__
+
+    ---
+
+    Distribute applications built with Dyalog to your end users or customers, with
+    flexible pricing models to match different deployment scenarios.
+
+    [:octicons-arrow-right-24: Run-Time Licences](https://dyalogprod.gos.dyalog.com/pricing-and-licences/run-time-licences/)
+
+-   __Separately-Licensed Products__
+
+    ---
+
+    Additional licences for Dyalog tools and products not covered by standard
+    Developer or Run-Time Licences.
+
+    [:octicons-arrow-right-24: Separately-Licensed Products](https://dyalogprod.gos.dyalog.com/pricing-and-licences/separately-licensed-products/)
+
+</div>
+
+## Finding the right licence
+
+Not sure which licence fits your needs?
+
+- Try the interactive [Licence Guide](https://dyalogprod.gos.dyalog.com/pricing-and-licences/licence-guide/)
+- Email [sales@dyalog.com](mailto:sales@dyalog.com)
+- Call [+44 1256 830030](tel:+441256830030)
+
+## Key documents
+
+- [Terms and Conditions (PDF)](https://dyalogprod.gos.dyalog.com/uploads/documents/dyalog-licence-terms-and-conditions.pdf)
+- [Price List (PDF)](https://dyalogprod.gos.dyalog.com/uploads/documents/dyalog-licence-price-list.pdf)
+- [Licence Agreement (PDF)](https://dyalogprod.gos.dyalog.com/uploads/documents/dyalog-software-licence-agreement.pdf)
