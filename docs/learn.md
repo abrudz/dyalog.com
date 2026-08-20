@@ -1,62 +1,74 @@
-# Learn
+# Learn Dyalog APL
 
-Start your journey with Dyalog APL — an array-oriented language that expresses
-complex ideas in remarkably little code.
+## Start your journey with Dyalog and Dyalog APL
 
-Want to try APL immediately? Experiment in your browser with
-[TryAPL](https://tryapl.org) — no installation required.
+Learning a new programming language is exciting, but it can also be a little
+daunting. To help you get started, we have identified the resources that are most
+useful depending on your previous experience – from those who are new to
+programming through to those who are experienced users of other (non-Dyalog)
+implementations.
 
-## Choose your learning path
+Want to try APL? Start experimenting in your browser with
+[TryAPL](https://tryapl.org) – no installation required.
+
+## Choose the best learning path for your experience
 
 <div class="grid cards" markdown>
 
--   :material-seedling:{ .lg .middle } __I've never coded before__
+-   __I have never coded before__
 
-    ---
+    Learn to solve problems with APL's elegant notation. No prior programming
+    experience required.
 
-    Learn to solve problems with APL's elegant notation, no prior programming
-    experience needed.
+    [Dyalog APL for Non-programmers](https://dyalogprod.gos.dyalog.com/learn/apl-for-non-programmers/)
 
-    [:octicons-arrow-right-24: APL for Non-programmers](https://dyalogprod.gos.dyalog.com/learn/apl-for-non-programmers/)
-
--   :material-code-braces:{ .lg .middle } __I've coded, but am new to APL__
-
-    ---
+-   __I have coded before, but am new to APL__
 
     Bring your programming experience to APL's array-oriented paradigm and
-    discover a different approach.
+    discover a different way of thinking about code.
 
-    [:octicons-arrow-right-24: APL for Programmers](https://dyalogprod.gos.dyalog.com/learn/apl-for-programmers/)
+    [Dyalog APL for Programmers](https://dyalogprod.gos.dyalog.com/learn/apl-for-programmers/)
 
--   :material-trending-up:{ .lg .middle } __I know some Dyalog APL__
+-   __I know some Dyalog APL__
 
-    ---
+    Deepen your understanding and expand your knowledge with intermediate and
+    advanced techniques.
 
-    Deepen your understanding with intermediate and advanced techniques.
+    [Advance Your Dyalog APL Skills](https://dyalogprod.gos.dyalog.com/learn/advance-your-apl-skills/)
 
-    [:octicons-arrow-right-24: Advance your skills](https://dyalogprod.gos.dyalog.com/learn/advance-your-apl-skills/)
+-   __I know a different APL implementation__
 
--   :material-swap-horizontal:{ .lg .middle } __I know a different APL__
+    Familiar with APL+Win, APL2, or another APL implementation? See what Dyalog
+    APL offers and where it differs.
 
-    ---
-
-    Coming from APL+Win, APL2, or another variant? See what Dyalog offers and
-    where it differs.
-
-    [:octicons-arrow-right-24: Explore Dyalog APL](https://dyalogprod.gos.dyalog.com/learn/differences-from-other-apls/)
+    [Explore Dyalog APL](https://dyalogprod.gos.dyalog.com/learn/differences-from-other-apls/)
 
 </div>
 
-## Getting started
+> You don't need a computer science background, advanced maths, or memorised
+> symbols. Most people learn APL by experimenting, getting things wrong, and
+> gradually understanding what APL thinking means.
+>
+> — [Rich Park](https://dyalogprod.gos.dyalog.com/about/team-dyalog/rich-park/), APL Teacher/Evangelist
 
-- [Dyalog Quick Start Guide](quick-start.md) — download, install, and your first session
-- [APL Challenge](https://challenge.dyalog.com/) — turn ideas into code, guided
-- [APL Forge](https://dyalogprod.gos.dyalog.com/learn/apl-forge/) — build a project, win prizes
+## Quick Links
 
-## Quick links
+<div class="grid cards" markdown>
 
-- [Downloads](downloads.md) — get Dyalog with a free Basic Licence
-- [Documentation](documentation.md) — the complete documentation set
-- [Typing APL](https://dyalogprod.gos.dyalog.com/learn/typing-apl/) — ways to type APL's glyphs
-- [Useful tips](https://dyalogprod.gos.dyalog.com/learn/tips-for-using-dyalog/) — hints from new APL users
-- [Community and Resources](community.md) — forums, chat, videos, and more
+-   [__Downloads__](downloads.md)
+
+    Download Dyalog with a free Basic Licence.
+
+-   [__Documentation__](documentation.md)
+
+    Access the complete documentation set for Dyalog.
+
+-   [__Typing APL__](https://dyalogprod.gos.dyalog.com/learn/typing-apl/)
+
+    Discover the different ways to type APL's glyphs.
+
+-   [__Useful Tips__](https://dyalogprod.gos.dyalog.com/learn/tips-for-using-dyalog/)
+
+    Explore hints and tips suggested by other new APLers.
+
+</div>

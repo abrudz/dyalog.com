@@ -1,6 +1,9 @@
-# Quick Start Guide
+# Dyalog Quick Start Guide
 
-Download, install, and run your first Dyalog APL session.
+**Installation, Basics, and Your First Workflow**
+
+The following instructions should enable you to get started with a basic workflow in
+the Dyalog development environment.
 
 ## Install Dyalog
 
@@ -51,11 +54,18 @@ Download, install, and run your first Dyalog APL session.
     For 64-bit, follow the Linux instructions. See the
     [Raspberry Pi User Guide](https://docs.dyalog.com/20.0/Dyalog%20for%20Raspberry%20Pi%20User%20Guide.pdf).
 
-## Use Dyalog
+## Using Dyalog
 
-### The interactive session
+The following describes the basics of writing code and saving your work. For a more
+detailed walkthrough of installing Dyalog and beginning to use the development
+environments, see
+[Chapter 2 of Mastering Dyalog APL](https://mastering.dyalog.com/Getting-Started.html).
 
-Type an expression (traditionally indented by six spaces) and press Enter:
+### Interactive session (REPL)
+
+When you start Dyalog, you are presented with a blank area with a text cursor. This
+is the Session window, where you interact with the interpreter. Type APL expressions
+(usually indented by 6 spaces) and press Enter to see their results:
 
 ```apl
       2 + 3
