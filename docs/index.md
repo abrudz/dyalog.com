@@ -468,7 +468,7 @@ Pick a problem and a language, and compare!
 
 -   <span class="card-eyebrow">Competitions</span>
 
-    [__Winners of the APL Forge 2026 Announced__](https://dyalogprod.gos.dyalog.com/news/2024-apl-forge-winners/)
+    [__Winners of the APL Forge 2026 Announced__](news/2024-apl-forge-winners.md)
 
     Meet the two winners of the 2026 APL Forge and the projects that earned them
     top honours.
@@ -482,28 +482,28 @@ Pick a problem and a language, and compare!
 
 -   <span class="card-eyebrow">Team Dyalog</span>
 
-    [__Asher, welcome to Dyalog__](https://dyalogprod.gos.dyalog.com/about/team-dyalog/asher-harvey-smith/)
+    [__Asher, welcome to Dyalog__](about/team-dyalog/asher-harvey-smith.md)
 
     Meet Asher Harvey-Smith, a Dyalog developer working on the interpreter,
     performance, and correctness.
 
 -   <span class="card-eyebrow">Competitions</span>
 
-    [__Take the APL Challenge__](https://dyalogprod.gos.dyalog.com/learn/apl-challenge/)
+    [__Take the APL Challenge__](learn/apl-challenge.md)
 
     Join the APL Challenge and transform ideas into code. Not a programmer? No
     problem! We'll guide you.
 
 -   <span class="card-eyebrow">Blog</span>
 
-    [__Employee Spotlight: Martin__](https://dyalogprod.gos.dyalog.com/blog/)
+    [__Employee Spotlight: Martin__](blog/2026/08/employee-spotlight-martin.md)
 
     Martin Franck has reached his first year anniversary with Dyalog Ltd, and this
     blog post looks at how he's found his first twelve months.
 
 -   <span class="card-eyebrow">Blog</span>
 
-    [__Working with LLMs and Dyalog__](https://dyalogprod.gos.dyalog.com/blog/2026/07/working-with-llms-and-dyalog/)
+    [__Working with LLMs and Dyalog__](blog/2026/07/working-with-llms-and-dyalog.md)
 
     Stefan Kruger outlines how he utilises LLMs when working with APL. He describes
     his set-up and working practices, and provides a few practical tips on how to
