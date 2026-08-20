@@ -82,7 +82,7 @@ Pick a problem and a language, and compare!
         }
         
         func main() {
-        	LstSum([]int{3, 1, 4, 1, 5})
+        	LstSum([]int{3, 1, 4, 1, 5}) // 14
         }
         ```
 
@@ -165,6 +165,10 @@ Pick a problem and a language, and compare!
         		}
         	}
         	return out
+        }
+        
+        func main() {
+        	ColSum([][]int{{3, 1}, {4, 1}, {5, 9}}) // [12 11]
         }
         ```
 
@@ -251,9 +255,18 @@ Pick a problem and a language, and compare!
         func WinSum(xs []int, window int) []int {
         	out := make([]int, 0, len(xs)-window+1)
         	for i := 0; i+window <= len(xs); i++ {
-        		out = append(out, LstSum(xs[i:i+window]))
+        		s := 0
+        		for _, x := range xs[i : i+window] {
+        			s += x
+        		}
+        		out = append(out, s)
         	}
         	return out
+        }
+        
+        func main() {
+        	WinSum([]int{3, 1, 4, 1, 5}, 2) // [4 5 5 6]
+        	WinSum([]int{3, 1, 4, 1, 5}, 3) // [8 6 10]
         }
         ```
 
@@ -353,9 +366,19 @@ Pick a problem and a language, and compare!
         func ATRSum(table [][]int, window int) [][]int {
         	out := make([][]int, 0, len(table)-window+1)
         	for i := 0; i+window <= len(table); i++ {
-        		out = append(out, ColSum(table[i:i+window]))
+        		sum := make([]int, len(table[0]))
+        		for _, row := range table[i : i+window] {
+        			for j, x := range row {
+        				sum[j] += x
+        			}
+        		}
+        		out = append(out, sum)
         	}
         	return out
+        }
+        
+        func main() {
+        	ATRSum([][]int{{3, 1}, {4, 1}, {5, 9}}, 2) // [[7 2] [9 10]]
         }
         ```
 
@@ -459,6 +482,8 @@ Pick a problem and a language, and compare!
     === "Go"
 
         ```go
+        import "slices"
+        
         func add(a, b any) any {
         	xs, aVec := a.([]int)
         	ys, bVec := b.([]int)
@@ -487,6 +512,13 @@ Pick a problem and a language, and compare!
         		}
         	}
         	return acc
+        }
+        
+        func main() {
+        	MixSum([][]any{
+        		{1, 2, 3},
+        		{[]int{1, 2}, []int{4, 5}, []int{5, 6}},
+        	}) // [[2 3] [6 7] [8 9]]
         }
         ```
 
