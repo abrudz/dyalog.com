@@ -15,49 +15,42 @@
 {% block tabs %}
 {{ super() }}
 <style>
-  /* Front-page only: no orange bar. The header and nav tabs take the page
-     background so they blend into the hero, while the Learn/Products/… tabs
-     stay visible. They remain sticky (opaque) so they're readable when the
-     page scrolls down into the content below the hero. */
+  /* Front-page header: transparent over the hero at the top, then — once the
+     page is scrolled — it fades to the STANDARD content-page header (orange bar,
+     white logo). All the transparent-state overrides below are therefore scoped
+     to `body:not(.mdx-header-solid)`; in the solid state nothing overrides
+     Material, so the default orange header shows. The fade comes from the
+     always-on transition. */
   .md-header,
-  .md-tabs {
-    background-color: transparent;   /* transparent over the hero… */
+  .md-tabs { transition: background-color 0.25s, box-shadow 0.25s; }
+  .md-header .md-logo img { transition: filter 0.25s; }
+
+  body:not(.mdx-header-solid) .md-header,
+  body:not(.mdx-header-solid) .md-tabs {
+    background-color: transparent;
     box-shadow: none;
     color: var(--dyalog-midnight);
-    transition: background-color 0.25s, box-shadow 0.25s;
     /* header foreground var — drives the search icon & placeholder too */
     --md-primary-bg-color: var(--dyalog-midnight);
     --md-primary-bg-color--light: rgba(0, 59, 92, 0.6);
   }
-  [data-md-color-scheme="slate"] .md-header,
-  [data-md-color-scheme="slate"] .md-tabs {
+  body:not(.mdx-header-solid)[data-md-color-scheme="slate"] .md-header,
+  body:not(.mdx-header-solid)[data-md-color-scheme="slate"] .md-tabs {
     color: #fff;
     --md-primary-bg-color: #fff;
     --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
   }
-  /* nav tab links use the orange link colour (both schemes), not the header text colour */
-  .md-tabs__link { color: var(--dyalog-orange); opacity: 1; }
-  /* …then fade in a solid background once scrolled past the hero (the
-     mdx-header-solid body class is toggled by hero-grid.js). */
-  body.mdx-header-solid .md-header,
-  body.mdx-header-solid .md-tabs {
-    background-color: var(--dyalog-lotion);
-    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.06);
-  }
-  body.mdx-header-solid[data-md-color-scheme="slate"] .md-header,
-  body.mdx-header-solid[data-md-color-scheme="slate"] .md-tabs {
-    background-color: var(--dyalog-gunmetal);
-  }
-  /* Keep the orange wordmark orange here (it is inverted to white elsewhere) */
-  .md-header .md-logo img { filter: none; }
+  /* while transparent: nav tab links in the orange link colour, orange wordmark
+     (the default white-inverted logo returns in the solid state) */
+  body:not(.mdx-header-solid) .md-tabs__link { color: var(--dyalog-orange); opacity: 1; }
+  body:not(.mdx-header-solid) .md-header .md-logo img { filter: none; }
 
-  /* Search: Material's default hover (white 12%) disappears on our light
-     header, so tint the collapsed field so it stays visible and darkens
-     (not brightens to white) on hover. Inverted for the dark scheme. */
-  .md-search__form { background-color: rgba(0, 0, 0, 0.05); }
-  .md-search__form:hover { background-color: rgba(0, 0, 0, 0.10); }
-  [data-md-color-scheme="slate"] .md-search__form { background-color: rgba(255, 255, 255, 0.08); }
-  [data-md-color-scheme="slate"] .md-search__form:hover { background-color: rgba(255, 255, 255, 0.16); }
+  /* Search: dark tint only while the header is transparent (so it's visible on
+     the light hero); the solid state uses Material's default header search. */
+  body:not(.mdx-header-solid) .md-search__form { background-color: rgba(0, 0, 0, 0.05); }
+  body:not(.mdx-header-solid) .md-search__form:hover { background-color: rgba(0, 0, 0, 0.10); }
+  body:not(.mdx-header-solid)[data-md-color-scheme="slate"] .md-search__form { background-color: rgba(255, 255, 255, 0.08); }
+  body:not(.mdx-header-solid)[data-md-color-scheme="slate"] .md-search__form:hover { background-color: rgba(255, 255, 255, 0.16); }
 
   /* Material injects an <h1> from the page title because the markdown body has
      no h1 (the hero template supplies it); hide that stray heading here. */
