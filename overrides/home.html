@@ -1,0 +1,190 @@
+{% extends "main.html" %}
+
+<!--
+  Custom landing page for the Dyalog site.
+  Overrides the `tabs` block with a full-bleed hero; the inline <style> below
+  only applies on this page (the template renders on the home page only), so it
+  is where the front-page-only header transparency lives.
+
+  The examples use Material's standard content-tabs markup (tabbed-set /
+  tabbed-alternate) so they get the theme's native tab styling — pure CSS, no
+  JS. Each tab holds a code block and an always-visible explanation paragraph.
+  A distinct radio `name` (__ex) avoids clashing with any tabs in index.md.
+-->
+
+{% block tabs %}
+{{ super() }}
+<style>
+  /* Front-page only: no orange bar. The header and nav tabs take the page
+     background so they blend into the hero, while the Learn/Products/… tabs
+     stay visible. They remain sticky (opaque) so they're readable when the
+     page scrolls down into the content below the hero. */
+  .md-header,
+  .md-tabs {
+    background-color: transparent;   /* transparent over the hero… */
+    box-shadow: none;
+    color: var(--dyalog-midnight);
+    transition: background-color 0.25s, box-shadow 0.25s;
+    /* header foreground var — drives the search icon & placeholder too */
+    --md-primary-bg-color: var(--dyalog-midnight);
+    --md-primary-bg-color--light: rgba(0, 59, 92, 0.6);
+  }
+  [data-md-color-scheme="slate"] .md-header,
+  [data-md-color-scheme="slate"] .md-tabs {
+    color: #fff;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+  }
+  /* nav tab links use the orange link colour (both schemes), not the header text colour */
+  .md-tabs__link { color: var(--dyalog-orange); opacity: 1; }
+  /* …then fade in a solid background once scrolled past the hero (the
+     mdx-header-solid body class is toggled by hero-grid.js). */
+  body.mdx-header-solid .md-header,
+  body.mdx-header-solid .md-tabs {
+    background-color: var(--dyalog-lotion);
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.06);
+  }
+  body.mdx-header-solid[data-md-color-scheme="slate"] .md-header,
+  body.mdx-header-solid[data-md-color-scheme="slate"] .md-tabs {
+    background-color: var(--dyalog-gunmetal);
+  }
+  /* Keep the orange wordmark orange here (it is inverted to white elsewhere) */
+  .md-header .md-logo img { filter: none; }
+
+  /* Search: Material's default hover (white 12%) disappears on our light
+     header, so tint the collapsed field so it stays visible and darkens
+     (not brightens to white) on hover. Inverted for the dark scheme. */
+  .md-search__form { background-color: rgba(0, 0, 0, 0.05); }
+  .md-search__form:hover { background-color: rgba(0, 0, 0, 0.10); }
+  [data-md-color-scheme="slate"] .md-search__form { background-color: rgba(255, 255, 255, 0.08); }
+  [data-md-color-scheme="slate"] .md-search__form:hover { background-color: rgba(255, 255, 255, 0.16); }
+
+  /* Material injects an <h1> from the page title because the markdown body has
+     no h1 (the hero template supplies it); hide that stray heading here. */
+  .md-content__inner > h1:first-child { display: none; }
+</style>
+
+<section class="mdx-container">
+  <div id="hero-grid" class="mdx-hero__grid" aria-hidden="true"></div>
+  <div class="md-grid md-typeset">
+    <div class="mdx-hero">
+      <div class="mdx-hero__content">
+        <p class="mdx-hero__badge"><a href="https://usermeeting.dyalog.com/">Dyalog '26</a> starts on 12 Oct&ensp;·&ensp;<a href="#whats-happening">More News</a></p>
+        <h1>More thinking. Less code.</h1>
+        <p>Dyalog APL is an array-oriented programming language that lets you express
+           complex ideas in remarkably little code.<br>
+           We build it, support it, and have done for over 40 years.</p>
+        <p class="mdx-hero__buttons">
+          <a href="{{ 'learn/' | url }}" class="md-button md-button--primary">Download Dyalog for Free</a>
+          <a href="{{ 'learn/' | url }}" class="md-button">1-min intro video</a>
+        </p>
+
+        <div class="mdx-cards">
+          <div class="mdx-explore mdx-card">
+            <h2>Explore Dyalog</h2>
+            <p>Try Dyalog free for educational and non-commercial use, get started or view the docs.</p>
+            <ul class="mdx-explore__links">
+              <li><a href="{{ 'learn/' | url }}">Quick Start Guide</a></li>
+              <li><a href="{{ 'products/' | url }}">Documentation</a></li>
+              <li><a href="{{ 'pricing/' | url }}">Prices and Licences</a></li>
+              <li><a href="{{ 'about/' | url }}">About Us</a></li>
+            </ul>
+          </div>
+          <div class="mdx-examples mdx-card">
+          <div class="tabbed-set tabbed-alternate" data-tabs="9:5">
+            <input checked="checked" id="__ex_1" name="__ex" type="radio" />
+            <input id="__ex_2" name="__ex" type="radio" />
+            <input id="__ex_3" name="__ex" type="radio" />
+            <input id="__ex_4" name="__ex" type="radio" />
+            <input id="__ex_5" name="__ex" type="radio" />
+            <div class="tabbed-labels">
+              <label for="__ex_1">Over 18?</label>
+              <label for="__ex_2">Word starts</label>
+              <label for="__ex_3">Column means</label>
+              <label for="__ex_4">Letter counts</label>
+              <label for="__ex_5">Times table</label>
+            </div>
+            <div class="tabbed-content">
+
+              <div class="tabbed-block">
+<pre><code>      names←'Kim' 'Alex' 'Ash' 'Jan' 'Gale'
+      ages ← 27    14     17    18    19
+      (ages ≥ 18) / names
+(
+ 'Kim'
+ 'Jan'
+ 'Gale'
+)</code></pre>
+                <p class="mdx-examples__explain"><code>ages ≥ 18</code> gives a mask (<code>1 0 0 1 1</code>). <code>/</code>
+                     filters <code>names</code>. The whole thing can also be written as
+                     <code>ages ≥∘18⍛/ names</code>.</p>
+              </div>
+
+              <div class="tabbed-block">
+<pre><code>      text ← 'ThisIsCamelCaseText'
+      mask ← text ∊ ⎕A
+      mask ⊂ text
+(
+ 'This'
+ 'Is'
+ 'Camel'
+ 'Case'
+ 'Text'
+)</code></pre>
+                <p class="mdx-examples__explain"><code>∊</code> is <em>member of</em> (which maps automatically).
+                     <code>⎕A</code> is the uppercase alphabet. <code>⊂</code> cuts the data on
+                     its right where indicated by the mask on its left. The whole thing can also
+                     be written as <code>∊∘⎕A⍛⊂ 'ThisIsCamelCaseText'</code>.</p>
+              </div>
+
+              <div class="tabbed-block">
+<pre><code>      (+⌿ ÷ ≢) [3 1 4
+                1 5 9
+                2 6 5
+                3 5 8]
+2.25 4.25 6.5</code></pre>
+                <p class="mdx-examples__explain"><code>+⌿</code> sums the columns. <code>≢</code> is tally (number of rows).
+                     <code>÷</code> (divide) maps automatically over a list and a number.
+                     <code>(+⌿ ÷ ≢)</code> is an anonymous function; the column sum divided by
+                     the row count.</p>
+              </div>
+
+              <div class="tabbed-block">
+<pre><code>      ,∘≢⌸ 'GATTACA'
+[
+ 'G' 1
+ 'A' 3
+ 'T' 2
+ 'C' 1
+]</code></pre>
+                <p class="mdx-examples__explain"><code>,∘≢</code> composes concatenation (<code>,</code>) with counting
+                     (<code>≢</code>), so for example <code>10 ,∘≢ 'abcd'</code> is
+                     <code>10 4</code>. <code>⌸</code> calls that composed function with each
+                     unique letter on its left and its indices on its right, pairing up letters
+                     with how many times they occur.</p>
+              </div>
+
+              <div class="tabbed-block">
+<pre><code>      nums ← ⍳5
+      nums ∘.× nums
+[
+ 1  2  3  4  5
+ 2  4  6  8 10
+ 3  6  9 12 15
+ 4  8 12 16 20
+ 5 10 15 20 25
+]</code></pre>
+                <p class="mdx-examples__explain"><code>⍳</code> generates the integers from 1 to <em>n</em>. <code>∘.</code>
+                     makes a table — here a multiplication table. The whole thing can also be
+                     written as <code>∘.×⍨⍳5</code>.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,510 @@
+/* ==========================================================================
+   Dyalog brand palette
+   Colours taken verbatim from the Dyalog brand guidelines.
+   ========================================================================== */
+
+:root {
+  --dyalog-orange:   #FF6A13; /* Retina Searing Orange — action  */
+  --dyalog-lavender: #685BC7; /* Retina Soothing Lavender — accent */
+  --dyalog-midnight: #003B5C; /* Midnight — depth */
+  --dyalog-gunmetal: #2A3244; /* Gunmetal — neutral backbone */
+  --dyalog-lotion:   #F2F1F0; /* lightest neutral */
+  --dyalog-raisin:   #232222; /* darkest neutral */
+}
+
+/* Light scheme */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        var(--dyalog-orange);
+  --md-primary-fg-color--light: #FF8A47;
+  --md-primary-fg-color--dark:  #CC530F;
+  --md-primary-bg-color:        #ffffff;
+  --md-accent-fg-color:         var(--dyalog-lavender);
+  --md-accent-fg-color--transparent: rgba(104, 91, 199, 0.1);
+  --md-footer-bg-color:         var(--dyalog-midnight);
+}
+
+/* Dark scheme */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        var(--dyalog-orange);
+  --md-primary-fg-color--light: #FF8A47;
+  --md-primary-fg-color--dark:  #CC530F;
+  --md-accent-fg-color:         var(--dyalog-lavender);
+  --md-accent-fg-color--transparent: rgba(104, 91, 199, 0.2);
+  --md-default-bg-color:        var(--dyalog-raisin);
+  --md-footer-bg-color:         var(--dyalog-gunmetal);
+}
+
+/* ==========================================================================
+   Fonts — all self-hosted (no external requests). IBM Plex Sans for body text,
+   IBM Plex Mono for code, APL387 for APL code. (Material's own font loading is
+   disabled via `font: false` in mkdocs.yml.)
+   ========================================================================== */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../assets/fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../assets/fonts/ibm-plex-sans-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../assets/fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../assets/fonts/ibm-plex-sans-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../assets/fonts/ibm-plex-mono-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "APL387";
+  src: url("../assets/fonts/APL387.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* wire the self-hosted families into Material's font variables. NOTE: Material
+   declares these on `body` (not :root), and with `font: false` they resolve to
+   the system stack — so the override must also be on `body` to win, otherwise a
+   :root value is shadowed by body's own declaration. APL387 sits as a fallback
+   so stray APL glyphs render even in otherwise-Plex code. */
+body {
+  --md-text-font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  --md-code-font-family: "IBM Plex Mono", "APL387", SFMono-Regular, Consolas, Menlo, monospace;
+}
+
+/* APL code — render the whole block/inline in APL387 (not mixed) so the
+   box-drawing and column alignment stay intact. Covers ```apl fences
+   (.language-apl) and the hand-written hero examples card. */
+.language-apl code,
+.mdx-examples pre,
+.mdx-examples pre code,
+.mdx-examples details code {
+  font-family: "APL387", "IBM Plex Mono", monospace;
+}
+
+/* ==========================================================================
+   Header — logo-only (site name hidden), orange wordmark inverted to white
+   on the coloured header. The home page re-overrides these (see home.html).
+   ========================================================================== */
+
+/* Hide the site-name / page-title text but keep the (empty) .md-header__title
+   element — its flex-grow:1 is what pushes the search box to the right. */
+.md-header__title > .md-header__ellipsis { display: none; }
+
+.md-header .md-logo img,
+.md-header .md-logo svg {
+  height: 1.6rem;
+  width: auto;
+  /* orange wordmark → white on the orange header bar */
+  filter: brightness(0) invert(1);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.mdx-container {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .mdx-container {
+  background-color: var(--dyalog-raisin);
+}
+
+.mdx-hero {
+  position: relative;
+  z-index: 1;
+  /* fill the viewport below the header + nav tabs (~4.8rem) without a scrollbar */
+  min-height: calc(100vh - 4.8rem);
+  display: flex;
+  align-items: flex-start;   /* stay at the top so tab/explanation changes don't shift it */
+  justify-content: center;
+  padding: 2.5rem 0 3rem;
+}
+
+.mdx-hero__content {
+  max-width: 54rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* keep the intro copy at a comfortable width even though the cards row is wide */
+.mdx-hero__content > p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Let the grid behind receive hover everywhere except the interactive bits.
+   pointer-events must be none on the covering ancestors (.md-grid, .mdx-hero),
+   not just .mdx-hero__content, or those wrappers swallow the events. */
+.mdx-container > .md-grid,
+.mdx-hero,
+.mdx-hero__content {
+  pointer-events: none;
+}
+.mdx-hero__content a,
+.mdx-hero__content .md-button,
+.mdx-hero__content .mdx-card {
+  pointer-events: auto;
+}
+
+.mdx-hero__content h1 {
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 1.15;
+  color: var(--dyalog-midnight);
+  margin-bottom: 1rem;
+}
+
+[data-md-color-scheme="slate"] .mdx-hero__content h1 {
+  color: var(--dyalog-lotion);
+}
+
+.mdx-hero__content p {
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.mdx-hero__content .mdx-hero__buttons {
+  margin-bottom: 2.6rem;   /* twice the space above the pill */
+}
+.mdx-hero__buttons .md-button {
+  margin: 0.3rem 0.4rem;
+}
+
+/* the secondary (outline) button is transparent by default — give it a solid
+   background so the hero grid isn't visible inside it. Only when NOT hovered,
+   so Material's hover fill still applies on hover. */
+.mdx-hero__buttons .md-button:not(.md-button--primary):not(:hover) {
+  background-color: #ffffff;
+}
+[data-md-color-scheme="slate"] .mdx-hero__buttons .md-button:not(.md-button--primary):not(:hover) {
+  background-color: var(--dyalog-raisin);
+}
+
+/* tiny announcement pill above the headline */
+.mdx-hero__content .mdx-hero__badge {
+  display: inline-block;
+  margin: 1.3rem auto 1.1rem;   /* ~half a h1 line of space above the pill */
+  padding: 0.25rem 0.85rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--dyalog-midnight);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(42, 50, 68, 0.15);
+  border-radius: 2rem;
+  box-shadow: 0 1px 3px rgba(42, 50, 68, 0.08);
+}
+.mdx-hero__content .mdx-hero__badge a {
+  color: var(--dyalog-orange);
+  text-decoration: none;
+}
+.mdx-hero__content .mdx-hero__badge a:hover { color: var(--dyalog-lavender); }
+[data-md-color-scheme="slate"] .mdx-hero__content .mdx-hero__badge {
+  color: var(--dyalog-lotion);
+  background: var(--dyalog-raisin);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   Interactive faint grid (populated by hero-grid.js) — full-bleed background
+   ========================================================================== */
+
+.mdx-hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 16), 1fr);
+  grid-auto-rows: var(--cell, 72px);
+  /* fade to the background over the top & bottom 1.5 rows (1.5 × 72px) */
+  --fade: 108px;
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0, #000 var(--fade),
+    #000 calc(100% - var(--fade)), transparent 100%);
+  mask-image: linear-gradient(to bottom,
+    transparent 0, #000 var(--fade),
+    #000 calc(100% - var(--fade)), transparent 100%);
+}
+
+.hero-cell {
+  border-right: 2px solid rgba(42, 50, 68, 0.06);
+  border-bottom: 2px solid rgba(42, 50, 68, 0.06);
+  background-color: transparent;
+  /* slow fade-back to "white" when the pointer leaves */
+  transition: background-color 1200ms ease;
+}
+
+.hero-cell:hover {
+  background-color: rgba(42, 50, 68, 0.10);
+  /* fast darken on hover */
+  transition-duration: 80ms;
+}
+
+/* Dark scheme: lighter hairlines and hover tint */
+[data-md-color-scheme="slate"] .hero-cell {
+  border-right-color: rgba(255, 255, 255, 0.06);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-md-color-scheme="slate"] .hero-cell:hover {
+  background-color: rgba(255, 255, 255, 0.10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cell { transition: none; }
+}
+
+/* ==========================================================================
+   Code-example content tabs (in the hero)
+   Uses Material's native .tabbed-set styling; only layout tweaks live here.
+   ========================================================================== */
+
+/* two side-by-side cards in the hero (explore | code examples) */
+.mdx-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1.75rem auto 0;
+}
+
+/* shared card chrome — opaque so the grid doesn't show through */
+.mdx-card {
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid rgba(42, 50, 68, 0.12);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem 1rem;
+  box-shadow: 0 4px 24px rgba(42, 50, 68, 0.14);
+}
+[data-md-color-scheme="slate"] .mdx-card {
+  background: var(--dyalog-raisin);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* left card: Explore Dyalog */
+.mdx-explore {
+  flex: 1 1 15rem;
+  max-width: 18rem;
+  padding: 1rem 1.2rem 1.2rem;
+}
+.mdx-explore h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dyalog-midnight);
+}
+[data-md-color-scheme="slate"] .mdx-explore h2 { color: var(--dyalog-lotion); }
+.mdx-explore p {
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+}
+.mdx-explore__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mdx-explore__links li { margin: 0; }
+.mdx-explore__links li + li { margin-top: 0.4rem; }
+.mdx-explore__links a {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dyalog-orange);
+  text-decoration: none;
+}
+.mdx-explore__links a:hover { color: var(--dyalog-lavender); text-decoration: none; }
+
+/* right card: code examples — width locked so expanding an Explanation (or a
+   long code line) never reflows or resizes the card */
+.mdx-examples {
+  flex: 0 1 34rem;   /* fixed basis; may shrink on small screens, never grows */
+  width: 34rem;
+  max-width: 34rem;
+  min-width: 0;      /* ignore inner min-content so content can't widen the card */
+}
+
+/* drop the tab-set's default 1em 0 margin so it sits flush in the card, and let
+   the inner boxes shrink rather than dictate the card width */
+.mdx-examples .tabbed-set,
+.mdx-examples .tabbed-content,
+.mdx-examples .tabbed-block {
+  margin: 0;
+  min-width: 0;
+}
+.mdx-examples pre { overflow-x: auto; }          /* long code lines scroll */
+.mdx-examples details p { overflow-wrap: anywhere; } /* long inline code wraps */
+
+/* keep the code compact enough to sit above the fold */
+.mdx-examples .tabbed-content pre > code {
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.mdx-examples .tabbed-content .highlight,
+.mdx-examples .tabbed-content pre {
+  margin: 0;
+}
+
+/* the always-visible explanation under each example */
+.mdx-examples .mdx-examples__explain {
+  margin: 0.6rem 0 0;
+  font-size: 0.72rem;
+}
+
+/* ==========================================================================
+   Small touches for the content below the hero
+   ========================================================================== */
+
+/* Trusted section (index.md) — everything centered */
+.md-typeset .mdx-trusted { text-align: center; }
+.md-typeset .mdx-trusted blockquote {
+  max-width: 40rem;
+  margin: 1.5rem auto 0;
+  border-left: 0;            /* centered quote reads better without the side rule */
+  font-style: italic;
+}
+
+/* company logos: inline links separated by spaces, flat in the text colour,
+   with a Lotion chip + original colours on hover */
+.md-typeset .mdx-logos { margin: 1.5rem 0; }
+.md-typeset .mdx-logos a {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.3rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.35rem;
+  transition: background-color 0.2s ease;
+}
+.md-typeset .mdx-logos img {
+  height: 3.6rem;
+  width: auto;
+  vertical-align: middle;
+  filter: brightness(0);            /* flat, matching the text colour */
+  transition: filter 0.2s ease;
+}
+[data-md-color-scheme="slate"] .md-typeset .mdx-logos img {
+  filter: brightness(0) invert(1);  /* flat white on dark */
+}
+.md-typeset .mdx-logos a:hover { background-color: var(--dyalog-lotion); }
+.md-typeset .mdx-logos a:hover img { filter: none; }
+
+/* eyebrow label on the "What's happening" cards */
+.md-typeset .card-eyebrow {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--dyalog-orange);
+}
+
+/* dark mode: "What's happening" cards use a solid Raisin background */
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li,
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ol > li,
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > .card {
+  background: var(--dyalog-raisin);
+}
+
+/* plain text client list (business.md) */
+.md-typeset .clients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: center;
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  font-weight: 600;
+}
+.md-typeset .clients li { margin: 0; }
+
+/* ==========================================================================
+   "Less code you say?" comparison — per-problem outer tabs, each holding a
+   language-tabs card beside an APL card. Direct-child combinators make sure
+   only the OUTER tab body becomes the two-column grid (not the inner tabs).
+   ========================================================================== */
+/* each problem tab holds a .mdx-pair wrapper → two cards side by side.
+   The wrapper lives INSIDE the tab block, so Material's tab show/hide is
+   untouched (no fighting the tabbed-block display rules). No outer wrapper
+   div: a markdown="1" wrapper around the outer tabs splits off the first tab. */
+/* centre the "Less code you say?" heading and its intro paragraph */
+.md-typeset #less-code,
+.md-typeset #less-code + p {
+  text-align: center;
+}
+
+.md-typeset .mdx-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+@media screen and (max-width: 44.98em) {
+  .md-typeset .mdx-pair { grid-template-columns: 1fr; }
+}
+
+/* both children are now tab-sets (languages + the single "Dyalog APL" tab) —
+   style them identically as cards */
+.md-typeset .mdx-pair > .tabbed-set {
+  margin: 0;
+  min-width: 0;   /* ignore inner min-content so the two columns stay equal (1fr = 1fr) */
+  background: #ffffff;
+  border: 1px solid rgba(42, 50, 68, 0.12);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+}
+/* let inner boxes shrink and long code scroll instead of widening a card */
+.md-typeset .mdx-pair .tabbed-set,
+.md-typeset .mdx-pair .tabbed-content,
+.md-typeset .mdx-pair .tabbed-block { min-width: 0; }
+[data-md-color-scheme="slate"] .md-typeset .mdx-pair > .tabbed-set {
+  background: var(--dyalog-raisin);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* compact code, scroll long lines instead of stretching the card */
+.md-typeset .mdx-pair pre > code { font-size: 0.7rem; line-height: 1.5; }
+.md-typeset .mdx-pair .highlight { overflow-x: auto; }
+
+/* The inner language tabs use a sliding underline indicator; when an outer tab
+   reveals a previously-hidden inner tab-set, that transition replays and the
+   line visibly slides into place. Disable the transition for in-pair tabs so
+   the indicator just appears where it belongs. */
+.js .md-typeset .mdx-pair .tabbed-labels::before {
+  transition: none;
+}

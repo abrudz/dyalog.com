@@ -1,0 +1,64 @@
+site_name: Dyalog
+site_description: More thinking. Less code. — express complex ideas in remarkably little code.
+site_url: https://example.com/
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/dyalog-wordmark-logo.svg
+  favicon: assets/dyalog-favicon.svg
+  font: false   # self-hosted via @font-face in stylesheets/extra.css
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/hero-grid.js
+
+nav:
+  - Learn: learn.md
+  - Products: products.md
+  - Pricing: pricing.md
+  - For Business: business.md
+  - Community and Resources: community.md
+  - About Us: about.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      pygments_lang_class: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
