@@ -1,6 +1,6 @@
 site_name: Dyalog
 site_description: More thinking. Less code. — express complex ideas in remarkably little code.
-site_url: https://example.com/
+site_url: https://abrudz.github.io/dyalog.com/
 
 theme:
   name: material
