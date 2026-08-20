@@ -2,6 +2,36 @@ site_name: Dyalog
 site_description: More thinking. Less code. — express complex ideas in remarkably little code.
 site_url: https://abrudz.github.io/dyalog.com/
 
+copyright: >
+  Copyright © 2004 – 2026 Dyalog Ltd. Minchens Court, Minchens Lane, Bramley,
+  Hampshire RG26 5BH, U.K. Company Number 05322189 (registered in England and
+  Wales). VAT Number GB812257648.
+
+extra:
+  generator: false
+  social:
+    - icon: simple/bluesky
+      link: https://bsky.app/profile/dyalog.bsky.social
+      name: Dyalog on Bluesky
+    - icon: fontawesome/brands/mastodon
+      link: https://mastodon.social/@dyalog
+      name: Dyalog on Mastodon
+    - icon: fontawesome/brands/linkedin
+      link: http://www.linkedin.com/company/dyalog-ltd-
+      name: Dyalog on LinkedIn
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/dyalogapl
+      name: Dyalog on Instagram
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/DyalogAPL
+      name: Dyalog on Facebook
+    - icon: fontawesome/brands/github
+      link: https://github.com/Dyalog
+      name: Dyalog on GitHub
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@DyalogLtd
+      name: Dyalog on YouTube
+
 theme:
   name: material
   custom_dir: overrides

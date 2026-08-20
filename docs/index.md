@@ -473,7 +473,7 @@ Pick a problem and a language, and compare!
     Meet the two winners of the 2026 APL Forge and the projects that earned them
     top honours.
 
-    [:octicons-arrow-right-24: Read more](https://dyalogprod.gos.dyalog.com/news/2024-apl-forge-winners/)
+    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/news/2024-apl-forge-winners/)
 
 -   <span class="card-eyebrow">Events</span>
 
@@ -482,7 +482,7 @@ Pick a problem and a language, and compare!
     Join us in Eastbourne, UK, from 12–16 October to exchange ideas, learn, and
     meet the Dyalog team.
 
-    [:octicons-arrow-right-24: Read more](https://usermeeting.dyalog.com)
+    [:octicons-arrow-right-24: Read](https://usermeeting.dyalog.com)
 
 -   <span class="card-eyebrow">Team Dyalog</span>
 
@@ -491,7 +491,7 @@ Pick a problem and a language, and compare!
     Meet Asher Harvey-Smith, a Dyalog developer working on the interpreter,
     performance, and correctness.
 
-    [:octicons-arrow-right-24: Read more](https://dyalogprod.gos.dyalog.com/about/team-dyalog/asher-harvey-smith/)
+    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/about/team-dyalog/asher-harvey-smith/)
 
 -   <span class="card-eyebrow">Competitions</span>
 
@@ -500,18 +500,18 @@ Pick a problem and a language, and compare!
     Join the APL Challenge and transform ideas into code. Not a programmer? No
     problem! We'll guide you.
 
-    [:octicons-arrow-right-24: Read more](https://dyalogprod.gos.dyalog.com/learn/apl-challenge/)
+    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/learn/apl-challenge/)
 
--   <span class="card-eyebrow">Latest blog post</span>
+-   <span class="card-eyebrow">Blog</span>
 
     __Employee Spotlight: Martin__
 
     Martin Franck has reached his first year anniversary with Dyalog Ltd, and this
     blog post looks at how he's found his first twelve months.
 
-    [:octicons-arrow-right-24: Read the post](https://dyalogprod.gos.dyalog.com/blog/)
+    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/blog/)
 
--   <span class="card-eyebrow">Previous blog post</span>
+-   <span class="card-eyebrow">Blog</span>
 
     __Working with LLMs and Dyalog__
 
@@ -519,6 +519,6 @@ Pick a problem and a language, and compare!
     his set-up and working practices, and provides a few practical tips on how to
     make an LLM more fluent in APL.
 
-    [:octicons-arrow-right-24: Read the post](https://dyalogprod.gos.dyalog.com/blog/2026/07/working-with-llms-and-dyalog/)
+    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/blog/2026/07/working-with-llms-and-dyalog/)
 
 </div>

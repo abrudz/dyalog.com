@@ -423,14 +423,14 @@ body {
 .md-typeset .mdx-logos a:hover { background-color: var(--dyalog-lotion); }
 .md-typeset .mdx-logos a:hover img { filter: none; }
 
-/* eyebrow label on the "What's happening" cards */
+/* eyebrow label on the "What's happening" cards — a faded, muted category tag */
 .md-typeset .card-eyebrow {
   display: block;
   margin-bottom: 0.3rem;
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--dyalog-orange);
+  color: var(--md-default-fg-color--light);
 }
 
 /* dark mode: "What's happening" cards use a solid Raisin background */
