@@ -70,6 +70,22 @@ Pick a problem and a language, and compare!
         lst_sum(&[3, 1, 4, 1, 5])  // 14
         ```
 
+    === "Go"
+
+        ```go
+        func LstSum(xs []int) int {
+        	s := 0
+        	for _, x := range xs {
+        		s += x
+        	}
+        	return s
+        }
+        
+        func main() {
+        	LstSum([]int{3, 1, 4, 1, 5})
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
@@ -138,6 +154,20 @@ Pick a problem and a language, and compare!
         col_sum(&vec![vec![3, 1], vec![4, 1], vec![5, 9]])  // [12 11]
         ```
 
+    === "Go"
+
+        ```go
+        func ColSum(table [][]int) []int {
+        	out := make([]int, len(table[0]))
+        	for _, row := range table {
+        		for j, x := range row {
+        			out[j] += x
+        		}
+        	}
+        	return out
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
@@ -165,9 +195,9 @@ Pick a problem and a language, and compare!
         ```apl
               ColSum←+⌿
         
-              ColSum[3 1
-                     4 1
-                     5 9]
+              ColSum [3 1
+                      4 1
+                      5 9]
         12 11
         ```
 
@@ -213,6 +243,18 @@ Pick a problem and a language, and compare!
         
         win_sum(&[3, 1, 4, 1, 5], 2)  // [4 5 5 6]
         win_sum(&[3, 1, 4, 1, 5], 3)  // [8 6 10]
+        ```
+
+    === "Go"
+
+        ```go
+        func WinSum(xs []int, window int) []int {
+        	out := make([]int, 0, len(xs)-window+1)
+        	for i := 0; i+window <= len(xs); i++ {
+        		out = append(out, LstSum(xs[i:i+window]))
+        	}
+        	return out
+        }
         ```
 
     === "Clojure"
@@ -305,6 +347,18 @@ Pick a problem and a language, and compare!
         atr_sum(&vec![vec![3, 1], vec![4, 1], vec![5, 9]], 2)  // [[7 2] [9 10]]
         ```
 
+    === "Go"
+
+        ```go
+        func ATRSum(table [][]int, window int) [][]int {
+        	out := make([][]int, 0, len(table)-window+1)
+        	for i := 0; i+window <= len(table); i++ {
+        		out = append(out, ColSum(table[i:i+window]))
+        	}
+        	return out
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
@@ -345,9 +399,9 @@ Pick a problem and a language, and compare!
         ```apl
               ATRSum←+⌿
         
-              2 ColSum[3 1
-                       4 1
-                       5 9]  
+              2 ATRSum [3 1
+                        4 1
+                        5 9]  
         [7  2
          9 10]
         ```
@@ -370,7 +424,7 @@ Pick a problem and a language, and compare!
                  : c + d;
           }));
         
-        mixSum([[1, 2, 3], [1, 2], [4, 5], [5, 6]])  // [[2, 3], [6, 7], [8, 9]]
+        mixSum([[1, 2, 3], [[1, 2], [4, 5], [5, 6]]])  // [[2, 3], [6, 7], [8, 9]]
         ```
 
     === "Python"
@@ -402,22 +456,49 @@ Pick a problem and a language, and compare!
         mix_sum(&[1, 2, 3], &[(1, 2), (4, 5), (5, 6)])  // [(2 3) (6 7) (8 9)]
         ```
 
+    === "Go"
+
+        ```go
+        func add(a, b any) any {
+        	xs, aVec := a.([]int)
+        	ys, bVec := b.([]int)
+        	if !aVec && !bVec {
+        		return a.(int) + b.(int)
+        	}
+        	n := max(len(xs), len(ys))
+        	if !aVec {
+        		xs = slices.Repeat([]int{a.(int)}, n)
+        	}
+        	if !bVec {
+        		ys = slices.Repeat([]int{b.(int)}, n)
+        	}
+        	out := make([]int, n)
+        	for i := range out {
+        		out[i] = xs[i] + ys[i]
+        	}
+        	return out
+        }
+        
+        func MixSum(table [][]any) []any {
+        	acc := append([]any(nil), table[0]...)
+        	for _, row := range table[1:] {
+        		for i := range acc {
+        			acc[i] = add(acc[i], row[i])
+        		}
+        	}
+        	return acc
+        }
+        ```
+
     === "Clojure"
 
         ```clojure
-        (defn- ext [x] (if (sequential? x) x (repeat x)))
-        
-        (defn pervade [f]
-          (fn p [a b]
-            (if (or (sequential? a) (sequential? b))
-              (mapv p (ext a) (ext b))
-              (f a b))))
-        
-        (defn reduce [f]
-          (let [pf (pervade f)]
-            (fn [rows] (reduce #(pf %2 %1) (reverse rows)))))
-        
-        (def mix-sum (reduce +))
+        (defn mix-sum [rows]
+          (letfn [(ext [x]   (if (sequential? x) x (repeat x)))
+                  (p+  [a b] (if (or (sequential? a) (sequential? b))
+                               (mapv p+ (ext a) (ext b))
+                               (+ a b)))]
+            (reduce p+ rows)))
         
         (mix-sum [[1 2 3] [[1 2] [4 5] [5 6]]]) ;; [[2 3] [6 7] [8 9]]
         ```
@@ -455,8 +536,8 @@ Pick a problem and a language, and compare!
         ```apl
               MixSum←+⌿
         
-              MixSum[1    2    3
-                     (1 2)(4 5)(5 6)]
+              MixSum [  1    2    3
+                      (1 2)(4 5)(5 6)]
         (2 3)(6 7)(8 9)
         ```
 
