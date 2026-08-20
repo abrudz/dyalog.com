@@ -468,57 +468,45 @@ Pick a problem and a language, and compare!
 
 -   <span class="card-eyebrow">Competitions</span>
 
-    __Winners of the APL Forge 2026 Announced__
+    [__Winners of the APL Forge 2026 Announced__](https://dyalogprod.gos.dyalog.com/news/2024-apl-forge-winners/)
 
     Meet the two winners of the 2026 APL Forge and the projects that earned them
     top honours.
 
-    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/news/2024-apl-forge-winners/)
-
 -   <span class="card-eyebrow">Events</span>
 
-    __Registration open for Dyalog '26__
+    [__Registration open for Dyalog '26__](https://usermeeting.dyalog.com)
 
     Join us in Eastbourne, UK, from 12–16 October to exchange ideas, learn, and
     meet the Dyalog team.
 
-    [:octicons-arrow-right-24: Read](https://usermeeting.dyalog.com)
-
 -   <span class="card-eyebrow">Team Dyalog</span>
 
-    __Asher, welcome to Dyalog__
+    [__Asher, welcome to Dyalog__](https://dyalogprod.gos.dyalog.com/about/team-dyalog/asher-harvey-smith/)
 
     Meet Asher Harvey-Smith, a Dyalog developer working on the interpreter,
     performance, and correctness.
 
-    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/about/team-dyalog/asher-harvey-smith/)
-
 -   <span class="card-eyebrow">Competitions</span>
 
-    __Take the APL Challenge__
+    [__Take the APL Challenge__](https://dyalogprod.gos.dyalog.com/learn/apl-challenge/)
 
     Join the APL Challenge and transform ideas into code. Not a programmer? No
     problem! We'll guide you.
 
-    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/learn/apl-challenge/)
-
 -   <span class="card-eyebrow">Blog</span>
 
-    __Employee Spotlight: Martin__
+    [__Employee Spotlight: Martin__](https://dyalogprod.gos.dyalog.com/blog/)
 
     Martin Franck has reached his first year anniversary with Dyalog Ltd, and this
     blog post looks at how he's found his first twelve months.
 
-    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/blog/)
-
 -   <span class="card-eyebrow">Blog</span>
 
-    __Working with LLMs and Dyalog__
+    [__Working with LLMs and Dyalog__](https://dyalogprod.gos.dyalog.com/blog/2026/07/working-with-llms-and-dyalog/)
 
     Stefan Kruger outlines how he utilises LLMs when working with APL. He describes
     his set-up and working practices, and provides a few practical tips on how to
     make an LLM more fluent in APL.
-
-    [:octicons-arrow-right-24: Read](https://dyalogprod.gos.dyalog.com/blog/2026/07/working-with-llms-and-dyalog/)
 
 </div>
