@@ -14,12 +14,12 @@ Dyalog is used by organisations worldwide to build and run important business
 systems.
 
 <p class="mdx-logos">
-<a href="https://www.investcloud.com/" title="InvestCloud" target="_blank" rel="noopener"><img src="assets/clients/investcloud.svg" alt="InvestCloud"></a>
-<a href="https://www.volvocars.com/" title="Volvo Cars" target="_blank" rel="noopener"><img src="assets/clients/volvo.svg" alt="Volvo Cars"></a>
-<a href="https://www.simcorp.com/" title="SimCorp" target="_blank" rel="noopener"><img src="assets/clients/simcorp.svg" alt="SimCorp"></a>
-<a href="https://www.ergo.com/" title="ERGO" target="_blank" rel="noopener"><img src="assets/clients/ergo.svg" alt="ERGO"></a>
-<a href="https://www.cgm.com/" title="CGM" target="_blank" rel="noopener"><img src="assets/clients/cgm.svg" alt="CGM"></a>
-<a href="https://www.metsim.com/" title="METSIM" target="_blank" rel="noopener"><img src="assets/clients/metsim.svg" alt="METSIM"></a>
+<a href="https://example.com/" title="Example Corp" target="_blank" rel="noopener"><img src="assets/clients/example-corp.svg" alt="Example Corp"></a>
+<a href="https://example.org/" title="Sample Industries" target="_blank" rel="noopener"><img src="assets/clients/sample-industries.svg" alt="Sample Industries"></a>
+<a href="https://example.net/" title="Placeholder Ltd" target="_blank" rel="noopener"><img src="assets/clients/placeholder-ltd.svg" alt="Placeholder Ltd"></a>
+<a href="https://www.example.com/" title="Demo Systems" target="_blank" rel="noopener"><img src="assets/clients/demo-systems.svg" alt="Demo Systems"></a>
+<a href="https://www.example.org/" title="Lorem Labs" target="_blank" rel="noopener"><img src="assets/clients/lorem-labs.svg" alt="Lorem Labs"></a>
+<a href="https://www.example.net/" title="Ipsum Inc" target="_blank" rel="noopener"><img src="assets/clients/ipsum-inc.svg" alt="Ipsum Inc"></a>
 </p>
 
 > We like to think of APL as our secret weapon. And yes, we know it's a bit unfair
