@@ -386,6 +386,18 @@ body {
   font-size: 0.72rem;
 }
 
+/* The hero example tabs live outside Material's content area, so its JS never
+   initialises the sliding tab indicator (the ::before underline). Draw the
+   active-tab underline ourselves via the checked label's bottom border, to
+   match the language comparison below. */
+.mdx-examples .tabbed-set > input:first-child:checked ~ .tabbed-labels > label:first-child,
+.mdx-examples .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > label:nth-child(2),
+.mdx-examples .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > label:nth-child(3),
+.mdx-examples .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > label:nth-child(4),
+.mdx-examples .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > label:nth-child(5) {
+  border-bottom-color: var(--md-default-fg-color);
+}
+
 /* ==========================================================================
    Small touches for the content below the hero
    ========================================================================== */
